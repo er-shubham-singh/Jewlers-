@@ -50,13 +50,28 @@ import AllJewelery_FingerRing from "./Component/All_Jewellery/AllJewelery_Finger
 import AllJwelery_Mangalsutras from "./Component/All_Jewellery/AllJwelery_Mangalsutras";
 import AllJwelery_Chains from "./Component/All_Jewellery/AllJwelery_Chains"
 import Navbar from './Component/Navbar/Navbar'
+import VideoCarousel from "./Component/VidCarousel";
+import DiamondSection from "./Component/Common/DiamondSection";
+import StoreSection from "./Component/Common/StoreSection";
+import WishList from "./Component/Common/WishList";
+import LoginSignUp from "./Component/Common/LoginSignUp";
+import ProductBag from "./Component/Common/ProductBag";
 function App() {
   return (
     <>
-      <Navbar />
-      <Header />  {/* ✅ Header will be shown on every page */}
+    <Navbar />
+      <Header /> 
+          <Header /> {/*  ✅ Header will be shown on every page */
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/slider" element={<VideoCarousel /> } />
+        <Route path="/store" element={<StoreSection />} />
+        <Route path="/wishlist" element = {<WishList />} />
+        <Route path ="/login/sihnup"  element = {<LoginSignUp />} />
+        <Route path="/addtobag"  element = {<ProductBag />} />
+ 
+        {/* Diamond Section */}
+        <Route path="/diamond" element={<DiamondSection /> } />
 
         {/* All Jewelery Link */}
         <Route path="/all-jewellery" element={<AllJewellary />} />

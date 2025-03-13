@@ -2,6 +2,16 @@ import { useState } from "react";
 import {  Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { menuItems } from "./menuItem";
+import {
+  FaSearch,
+  FaInstagram,
+  FaMicrophone,
+  FaGem,
+  FaStore,
+  FaHeart,
+  FaUser,
+  FaShoppingBag
+} from 'react-icons/fa';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -9,7 +19,41 @@ const Header = () => {
 
   
   return (
+   <>
+     
     <header className="bg-gray-800 sticky top-0 z-10 text-white shadow-lg ">
+    <nav className="flex items-center justify-between p-4 ">
+                <div className="flex items-center space-x-2">
+                    <img
+                        src=""
+                        alt=" Logo"
+                        className="h-10 text-[white]" />
+                </div>
+    
+                <div className="flex items-center border rounded-full px-4 py-2 w-full max-w-md gap-2">
+                    <FaSearch className="text-gray-600 mr-2" />
+                    <input
+                        type="text"
+                        placeholder="Search for Gold Jewellery, Diamond Jewellery and more..."
+                        className="outline-none w-full text-sm"
+                    />
+                    <FaInstagram className="text-gray-600 mx-2 cursor-pointer" />
+                    <FaMicrophone className="text-gray-600 cursor-pointer" />
+                </div>
+    
+                <div className="flex items-center space-x-4 text-[white] px-3">
+                    <Link to="/diamond" ><FaGem className="cursor-pointer size-7" /></Link>
+                    <Link to="/store"><FaStore className="cursor-pointer size-7" /></Link>
+                    <FaHeart className="cursor-pointer size-7" />
+                    <FaUser className="cursor-pointer size-7" />
+                    <div className="relative cursor-pointer">
+                        <FaShoppingBag className='size-7' />
+                        <span className="absolute -top-1 -right-1 bg-[#5b2724] text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                            0
+                        </span>
+                    </div>
+                </div>
+            </nav>
       <div className="container mx-auto flex justify-end pr-4 items-center">
         <h1 className="text-2xl font-bold absolute left-4 p-4">Brand</h1>
         
@@ -36,7 +80,7 @@ const Header = () => {
       {/* Dropdown */}
       {openDropdown === index && item.dropdown.length > 0 && (
         <div 
-          className="z-10 fixed left-1/2 top-[55px] transform -translate-x-1/2 w-[1200px] bg-white text-gray-900 rounded-lg shadow-lg"
+          className="z-10 fixed left-1/2 top-[129px] transform -translate-x-1/2 w-[1200px] bg-white text-gray-900 rounded-lg shadow-lg"
           onMouseEnter={() => setOpenDropdown(index)}
           onMouseLeave={() => setOpenDropdown(null)}
         >
@@ -117,6 +161,7 @@ const Header = () => {
         </nav>
       </div>
     </header>
+   </>
   );
 };
 

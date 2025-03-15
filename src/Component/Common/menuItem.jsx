@@ -5,11 +5,11 @@ export const menuItems = [
       link: "/all-jewellery",
       dropdown: [
         { name: "All Jewellery", imageIcon: "/icons/all-jewellery.png", link: "/all-jewellery",},
-        { name: "Earings", imageIcon: "/icons/earings.png", link: "/alljewelery-earings" },
-        { name: "Pendants", imageIcon: "/icons/pendants.png", link: "/all-jewellery-pendants" },
-        { name: "Finger Rings", imageIcon: "/icons/rings.png", link: "/all-jewellery-finger-rings" },
-        { name: "Mangalsutra", imageIcon: "/icons/mangalsutra.png", link: "/all-jewellery-mangalsutras" },
-        { name: "Chains", imageIcon: "/icons/chains.png", link: "/all-jewellery-chains" }
+        { name: "Earings", imageIcon: "/icons/earings.png", link: "/all-jewellery/earings" },
+        { name: "Pendants", imageIcon: "/icons/pendants.png", link: "/all-jewellery/pendants" },
+        { name: "Finger Rings", imageIcon: "/icons/rings.png", link: "/all-jewellery/finger-rings" },
+        { name: "Mangalsutra", imageIcon: "/icons/mangalsutra.png", link: "/all-jewellery/mangalsutras" },
+        { name: "Chains", imageIcon: "/icons/chains.png", link: "/all-jewellery/chains" }
       ]
     },
 

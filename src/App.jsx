@@ -61,14 +61,14 @@ import StoreSection from "./Component/Common/StoreSection";
 import WishList from "./Component/Common/WishList";
 import LoginSignUp from "./Component/Common/LoginSignUp";
 import ProductBag from "./Component/Common/ProductBag";
+import JewelleryCategory from "./Component/Common/JewelleryCategory";
 function App() {
   return (
     <>
 
-    <Navbar />
+   
       <Header /> 
-=======
-          <Header /> 
+
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -82,15 +82,22 @@ function App() {
         <Route path="/diamond" element={<DiamondSection /> } />
 
         {/* All Jewelery Link */}
+        {/* <Route path="/all-jewellery" element={<AllJewellary />} />
+        <Route path="/all-jewelery/earings" element={<AllJewelery_Earing />} />
+        <Route path="/all-jewellery/pendants" element={<AllJewelery_Pendants />} />
+        <Route path="/all-jewellery/finger-rings" element={<AllJewelery_FingerRing />} />
+        <Route path="/all-jewellery/mangalsutras" element={<AllJwelery_Mangalsutras />} />
+        <Route path="/all-jewellery/chains" element={<AllJwelery_Chains />} /> */}
+    {/* Route for all jewellery without category type */}
+
+     {/* Route for all jewellery without category type */}
         <Route path="/all-jewellery" element={<AllJewellary />} />
-        <Route path="/alljewelery-earings" element={<AllJewelery_Earing />} />
-        <Route path="/all-jewellery-pendants" element={<AllJewelery_Pendants />} />
-        <Route path="/all-jewellery-finger-rings" element={<AllJewelery_FingerRing />} />
-        <Route path="/all-jewellery-mangalsutras" element={<AllJwelery_Mangalsutras />} />
-        <Route path="/all-jewellery-chains" element={<AllJwelery_Chains />} />
+
+        {/* Route for jewellery with category type */}
+        <Route path="/all-jewellery/:categoryType" element={<AllJewellary />} />
 
         {/* Gold Link Page */}
-        <Route path="/gold" element={<Gold />} />
+        {/* <Route path="/gold" element={<Gold />} />
         <Route path="/gold-bangles" element={<Gold_Bangles />} />
         <Route path="/gold-bracelets" element={<Gold_Bracelets />} />
         <Route path="/gold-earings" element={<Gold_Earings />} />
@@ -102,7 +109,12 @@ function App() {
         <Route path="/gold-nose-pins" element={<Gold_Nose_Pins />} />
         <Route path="/gold-kadas" element={<Gold_Kadas />} />
         <Route path="/gold-mangalsutras" element={<Gold_Mangalsutras />} />
-        <Route path="/gold-jhumkas" element={<Gold_Jhumkas />} />
+        <Route path="/gold-jhumkas" element={<Gold_Jhumkas />} /> */}
+
+<Route path="/gold" element={<Gold />} />
+
+{/* Route for jewellery with category type */}
+<Route path="/gold/:categoryType" element={<Gold />} />
 
         {/* Diamong Link Page */}
         <Route path="/diamond" element={<Diamond />} />

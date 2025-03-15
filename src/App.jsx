@@ -50,7 +50,7 @@ import AllJewelery_FingerRing from "./Component/All_Jewellery/AllJewelery_Finger
 import AllJwelery_Mangalsutras from "./Component/All_Jewellery/AllJwelery_Mangalsutras";
 import AllJwelery_Chains from "./Component/All_Jewellery/AllJwelery_Chains"
 import Navbar from './Component/Navbar/Navbar'
-import VideoCarousel from "./Component/VidCarousel";
+import VideoCarousel from "./Component/VideoCarousel";
 import DiamondSection from "./Component/Common/DiamondSection";
 import StoreSection from "./Component/Common/StoreSection";
 import WishList from "./Component/Common/WishList";
@@ -59,9 +59,9 @@ import ProductBag from "./Component/Common/ProductBag";
 function App() {
   return (
     <>
+
     <Navbar />
       <Header /> 
-          <Header /> {/*  ✅ Header will be shown on every page */
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/slider" element={<VideoCarousel /> } />

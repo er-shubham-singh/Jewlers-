@@ -8,12 +8,12 @@ import goldimg5 from '../../assets/goldimg5.jpg'
 
 
 const goldData = [
-  { img: goldimg1, title: "Dazzling Grace Drop Earrings", price: "₹ 50784" },
-  { img: goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 40564" },
-  { img: goldimg3, title: "Dazzling Grace Drop Earrings", price: "₹ 45677" },
-  { img: goldimg4, title: "Dazzling Grace Drop Earrings", price: "₹ 12345" },
-  { img: goldimg5, title: "Dazzling Grace Drop Earrings", price: "₹ 98765" },
-  { img: goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 67548" }
+  { img: goldimg1,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 50784" },
+  { img: goldimg2,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 40564" },
+  { img: goldimg3,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 45677" },
+  { img: goldimg4,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 12345" },
+  { img: goldimg5,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 98765" },
+  { img: goldimg2,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 67548" }
 ]
 
 function Gold_Kadas() {
@@ -27,6 +27,7 @@ function Gold_Kadas() {
           <ProductCard
             key={index}
             titleimg={info.img}
+            hoverimg={info.hoverimg}
             title={info.title}
             price={info.price}
           />

@@ -5,3 +5,9 @@
     padding: 10%
 
 }
+
+.swiper-container {
+    padding-top: 20px;
+    /* Adjust as needed */
+    padding-bottom: 20px;
+}

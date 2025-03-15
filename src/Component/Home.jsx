@@ -195,6 +195,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section>
         <div className="max-w-[1200px] lg:mx-auto mx-3 ">
           <div className="justify-center text-center pt-8 pb-8">
@@ -229,6 +230,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section>
         <div className="max-w-[1200px] lg:mx-auto mx-3 ">
           <div className="justify-center text-center pt-8 pb-8">
@@ -248,6 +250,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section>
         <div className="max-w-[1200px] lg:mx-auto mx-3 ">
           <div className="justify-center text-center pt-8 pb-8">
@@ -282,6 +285,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section>
         <div className="max-w-[1200px] lg:mx-auto mx-3 ">
           <div className="justify-center text-center pt-8 pb-8">
@@ -301,6 +305,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section>
         <div className="max-w-[1200px] lg:mx-auto mx-3 ">
           <div className="justify-center text-center pt-8 pb-8">
@@ -333,6 +338,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section>
         <div className="max-w-[1200px] lg:mx-auto mx-3 ">
           <div className="justify-center text-center pt-8 pb-8">
@@ -374,11 +380,13 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <section>
         <div className="max-w-[1200px] lg:mx-auto mx-3 pt-5 pb-5 ">
           <img src={miabtanishq} alt="image" />
         </div>
       </section>
+
       <section>
         <div className="max-w-[1200px] lg:mx-auto mx-3 pt-5 pb-5 ">
           <div>
@@ -387,6 +395,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
       <section>
       <div className="max-w-[1200px] lg:mx-auto mx-3 pt-5 pb-5 ">
         <div>

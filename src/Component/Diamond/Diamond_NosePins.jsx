@@ -6,15 +6,16 @@ import diamondimg3 from '../../assets/diamondimg3.jpg'
 import diamondimg4 from '../../assets/diamondimg4.jpg'
 import diamondimg5 from '../../assets/diamondimg5.jpg'
 import diamondimg6 from '../../assets/diamondimg6.jpg'
+import goldimg2 from '../../assets/goldimg2.jpg'
 
 
 const diamondData = [
-  { img: diamondimg1, title: "Dazzling Grace Drop Earrings", price: "₹ 50784" },
-  { img: diamondimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 40564" },
-  { img: diamondimg3, title: "Dazzling Grace Drop Earrings", price: "₹ 45677" },
-  { img: diamondimg4, title: "Dazzling Grace Drop Earrings", price: "₹ 12345" },
-  { img: diamondimg5, title: "Dazzling Grace Drop Earrings", price: "₹ 98765" },
-  { img: diamondimg6, title: "Dazzling Grace Drop Earrings", price: "₹ 67548" }
+  { img: diamondimg1,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 50784" },
+  { img: diamondimg2,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 40564" },
+  { img: diamondimg3,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 45677" },
+  { img: diamondimg4,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 12345" },
+  { img: diamondimg5,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 98765" },
+  { img: diamondimg6,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 67548" }
 ]
 
 function Diamond_NosePins() {
@@ -28,6 +29,7 @@ function Diamond_NosePins() {
           <ProductCard
             key={index}
             titleimg={info.img}
+            hoverimg={info.hoverimg}
             title={info.title}
             price={info.price}
           />

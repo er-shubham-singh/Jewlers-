@@ -6,16 +6,18 @@ import ringimg3 from '../../assets/ringimg3.jpg'
 import ringimg4 from '../../assets/ringimg4.jpg'
 import ringimg5 from '../../assets/ringim5.jpg'
 import ringimg6 from '../../assets/ringimg6.jpg'
+import goldimg2 from '../../assets/goldimg2.jpg'
+
 
 
 
 const ringData = [
-  { img: ringimg1, title: "Dazzling Grace Drop Earrings", price: "₹ 50784" },
-  { img: ringimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 40564" },
-  { img: ringimg3, title: "Dazzling Grace Drop Earrings", price: "₹ 45677" },
-  { img: ringimg4, title: "Dazzling Grace Drop Earrings", price: "₹ 12345" },
-  { img: ringimg5, title: "Dazzling Grace Drop Earrings", price: "₹ 98765" },
-  { img: ringimg6, title: "Dazzling Grace Drop Earrings", price: "₹ 67548" }
+  { img: ringimg1,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 50784" },
+  { img: ringimg2,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 40564" },
+  { img: ringimg3,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 45677" },
+  { img: ringimg4,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 12345" },
+  { img: ringimg5,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 98765" },
+  { img: ringimg6,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 67548" }
 ]
 
 function PlatinumRing() {
@@ -29,6 +31,7 @@ function PlatinumRing() {
           <ProductCard
             key={index}
             titleimg={info.img}
+            hoverimg={info.hoverimg}
             title={info.title}
             price={info.price}
           />

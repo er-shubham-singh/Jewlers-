@@ -6,16 +6,6 @@ function GoldChains() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
-<<<<<<< HEAD
-const goldData = [
-  { img: goldimg1,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 50784" },
-  { img: goldimg2,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 40564" },
-  { img: goldimg3,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 45677" },
-  { img: goldimg4,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 12345" },
-  { img: goldimg5,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 98765" },
-  { img: goldimg2,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 67548" }
-]
-=======
   useEffect(() => {
     fetch('http://localhost:8000/api/products/Gold/Gold Chains')
       .then((response) => {
@@ -39,27 +29,9 @@ const goldData = [
 
   if (loading) return <p className="text-center text-lg">Loading...</p>
   if (error) return <p className="text-center text-red-500">{error}</p>
->>>>>>> d8edd46c1823e2433236922300b15d4842488896
 
   return (
     <>
-<<<<<<< HEAD
-    <h1 className='text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center'>
-      Gold Chains (65748)
-    </h1>
-    <div className=' grid md:grid-cols-2 lg:grid-cols-3'>
-      {goldData.map((info, index) => (
-        <ProductCard
-          key={index}
-          titleimg={info.img}
-          hoverimg={info.hoverimg}
-          title={info.title}
-          price={info.price}
-        />
-      ))}
-    </div>
-  </>
-=======
       <h1 className="text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center">
         Gold Chains ({goldData.length})
       </h1>
@@ -79,7 +51,6 @@ const goldData = [
         </div>
       )}
     </>
->>>>>>> d8edd46c1823e2433236922300b15d4842488896
   )
 }
 

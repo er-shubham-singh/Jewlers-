@@ -1,23 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import ProductCard from '../ProductsCard/ProductCard'
-<<<<<<< HEAD
-import goldimg1 from '../../assets/goldimg1.jpg'
-import goldimg2 from '../../assets/goldimg2.jpg'
-import goldimg3 from '../../assets/goldimg3.jpg'
-import goldimg4 from '../../assets/goldimg4.jpg'
-import goldimg5 from '../../assets/goldimg5.jpg'
-
-
-const goldData = [
-  { img: goldimg1,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 50784" },
-  { img: goldimg2,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 40564" },
-  { img: goldimg3,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 45677" },
-  { img: goldimg4,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 12345" },
-  { img: goldimg5,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 98765" },
-  { img: goldimg2,hoverimg:goldimg2,title: "Dazzling Grace Drop Earrings", price: "₹ 67548" }
-]
-=======
->>>>>>> d8edd46c1823e2433236922300b15d4842488896
 
 function Gold_Pendants() {
   const [goldData, setGoldData] = useState([])
@@ -50,23 +32,6 @@ function Gold_Pendants() {
 
   return (
     <>
-<<<<<<< HEAD
-    <h1 className='text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center'>
-    Gold Pendants (65748)
-    </h1>
-    <div className=' grid md:grid-cols-2 lg:grid-cols-3'>
-      {goldData.map((info, index) => (
-        <ProductCard
-          key={index}
-          titleimg={info.img}
-          hoverimg={info.hoverimg}
-          title={info.title}
-          price={info.price}
-        />
-      ))}
-    </div>
-  </>
-=======
       <h1 className="text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center">
         Gold Pendants ({goldData.length})
       </h1>
@@ -86,7 +51,6 @@ function Gold_Pendants() {
         </div>
       )}
     </>
->>>>>>> d8edd46c1823e2433236922300b15d4842488896
   )
 }
 

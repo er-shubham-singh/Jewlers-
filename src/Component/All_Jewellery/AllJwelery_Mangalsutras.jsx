@@ -38,4 +38,4 @@ function AllJwelery_Mangalsutras() {
   )
 }
 
-export default AllJewelry_Mangalsutras
+export default AllJwelery_Mangalsutra

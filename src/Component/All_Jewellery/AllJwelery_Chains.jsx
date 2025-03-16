@@ -1,40 +1,57 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ProductCard from '../ProductsCard/ProductCard'
-import jewelleryimg1 from '../../assets/jewelleryimg1.jpg'
-import jewelleryimg2 from '../../assets/jewelleryimg2.jpg'
-import jewelleryimg3 from '../../assets/jewelleryimg3.jpg'
-import jewelleryimg4 from '../../assets/jewelleryimg4.jpg'
-import jewelleryimg5 from '../../assets/jewelleryimg5.jpg'
-import goldimg2 from '../../assets/goldimg2.jpg'
-
-
-
-const jewelleryData = [
-  { img: jewelleryimg1,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 50784" },
-  { img: jewelleryimg2,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 40564" },
-  { img: jewelleryimg3,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 45677" },
-  { img: jewelleryimg4,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 12345" },
-  { img: jewelleryimg5,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 98765" },
-  { img: jewelleryimg2,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 67548" }
-]
+import axios from 'axios'
 
 function AllJwelery_Chains() {
+  const [jewelleryData, setJewelleryData] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchJewelleryData = async () => {
+      try {
+        const category = 'jewellery'
+        const categoryType = 'chains'
+
+        const response = await axios.get(
+          `http://localhost:8000/api/products/all%20jewellery/chains`
+        )
+        console.log('API Response:', response.data)
+        setJewelleryData(response.data)
+      } catch (err) {
+        setError('Failed to fetch jewellery data')
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchJewelleryData()
+  }, [])
+
   return (
     <>
-      <h1 className='text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center'>
-        Chains (98745)
+      <h1 className="text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center">
+        Chains ({jewelleryData.length})
       </h1>
-      <div className=' grid md:grid-cols-2 lg:grid-cols-3'>
-        {jewelleryData.map((info, index) => (
-          <ProductCard
-            key={index}
-            titleimg={info.img}
-            hoverimg={info.hoverimg}
-            title={info.title}
-            price={info.price}
-          />
-        ))}
-      </div>
+
+      {loading ? (
+        <p className="text-center">Loading...</p>
+      ) : error ? (
+        <p className="text-center text-red-500">{error}</p>
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3">
+          {jewelleryData.map((info, index) => (
+            <ProductCard
+              key={index}
+              titleimg={`http://localhost:8000/${info.img}`}
+              hoverimg={
+                info.hoverimg ? `http://localhost:8000/${info.hoverimg}` : null
+              }
+              title={info.title}
+              price={info.price}
+            />
+          ))}
+        </div>
+      )}
     </>
   )
 }

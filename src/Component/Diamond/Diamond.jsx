@@ -1,40 +1,62 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import ProductCard from '../ProductsCard/ProductCard'
-import diamondimg1 from '../../assets/diamondimg1.jpg'
-import diamondimg2 from '../../assets/diamondimg2.jpg'
-import diamondimg3 from '../../assets/diamondimg3.jpg'
-import diamondimg4 from '../../assets/diamondimg4.jpg'
-import diamondimg5 from '../../assets/diamondimg5.jpg'
-import diamondimg6 from '../../assets/diamondimg6.jpg'
-import goldimg2 from '../../assets/goldimg2.jpg'
-
-
-const diamondData = [
-  { img: diamondimg1,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 50784" },
-  { img: diamondimg2,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 40564" },
-  { img: diamondimg3,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 45677" },
-  { img: diamondimg4,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 12345" },
-  { img: diamondimg5,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 98765" },
-  { img: diamondimg6,hoverimg:goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 67548" }
-]
 
 function Diamond() {
+  const [products, setProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(
+          'http://localhost:8000/api/products/Diamond'
+        )
+
+        console.log('API Response:', response.data)
+
+        if (Array.isArray(response.data)) {
+          setProducts(response.data)
+        } else if (Array.isArray(response.data.products)) {
+          setProducts(response.data.products)
+        } else {
+          throw new Error('Invalid API response format')
+        }
+      } catch (err) {
+        setError(err.response?.data?.message || 'Failed to fetch products')
+        console.error('Error fetching products:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchProducts()
+  }, [])
+
+  if (loading) return <p className="text-center text-lg">Loading...</p>
+  if (error) return <p className="text-center text-red-500">{error}</p>
+
   return (
     <>
-      <h1 className='text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center'>
-        Diamonds (65748)
+      <h1 className="text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center">
+        Diamonds ({products.length})
       </h1>
-      <div className=' grid md:grid-cols-2 lg:grid-cols-3'>
-        {diamondData.map((info, index) => (
-          <ProductCard
-            key={index}
-            titleimg={info.img}
-            hoverimg={info.hoverimg}
-            title={info.title}
-            price={info.price}
-          />
-        ))}
-      </div>
+      {products.length === 0 ? (
+        <p className="text-center text-gray-500">No diamonds available</p>
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {products.map((info, index) => (
+            <ProductCard
+              key={index}
+              titleimg={info.imageFile1 || 'default-image.jpg'}
+              hoverimg={info.imageFile2 || 'default-hover.jpg'}
+              title={info.name}
+              price={`₹ ${info.price}`}
+            />
+          ))}
+        </div>
+      )}
     </>
   )
 }

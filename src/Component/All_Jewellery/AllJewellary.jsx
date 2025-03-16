@@ -1,47 +1,59 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useParams, useLocation } from 'react-router-dom'
 import ProductCard from '../ProductsCard/ProductCard'
-import jewelleryimg1 from '../../assets/jewelleryimg1.jpg'
-import jewelleryimg2 from '../../assets/jewelleryimg2.jpg'
-import jewelleryimg3 from '../../assets/jewelleryimg3.jpg'
-import jewelleryimg4 from '../../assets/jewelleryimg4.jpg'
-import jewelleryimg5 from '../../assets/jewelleryimg5.jpg'
 import FilterSidebar from '../Filter/FilterSidebar'
 import FilterButton from '../Filter/FilterButton'
 
-
-const jewelleryData = [
-  { img: jewelleryimg1, title: "Dazzling Grace Drop Earrings", price: "₹ 50784" },
-  { img: jewelleryimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 40564" },
-  { img: jewelleryimg3, title: "Dazzling Grace Drop Earrings", price: "₹ 45677" },
-  { img: jewelleryimg4, title: "Dazzling Grace Drop Earrings", price: "₹ 12345" },
-  { img: jewelleryimg5, title: "Dazzling Grace Drop Earrings", price: "₹ 98765" },
-  { img: jewelleryimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 67548" }
-]
-
 function AllJewellary() {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleClick = () => {
-    setIsOpen(true)
-  }
-  const clickHandle=()=>{
-    setIsOpen(false);
-  }
+  const { categoryType } = useParams()
+  const location = useLocation()
+  const [products, setProducts] = useState([])
+  const [isOpen, setIsOpen] = useState(false)
 
+  // Set category to "All Jewellery" by default
+  const category = 'All Jewellery'
+
+  // Log values for debugging
+  console.log('Current Path:', location.pathname)
+  console.log('Category Type from useParams():', categoryType)
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        let url = categoryType
+          ? `http://localhost:8000/api/products/${encodeURIComponent(
+              category
+            )}/${encodeURIComponent(categoryType)}`
+          : `http://localhost:8000/api/products/${encodeURIComponent(category)}`
+
+        console.log('Fetching from:', url)
+
+        const response = await axios.get(url)
+        setProducts(response.data)
+      } catch (error) {
+        console.error('Error fetching products:', error)
+      }
+    }
+
+    fetchProducts()
+  }, [categoryType])
 
   return (
     <>
-      <h1 className='text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center'>
-        All Jewelleryes (12345)
+      <h1 className="text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center">
+        {categoryType || 'All Jewellery'} ({products.length})
       </h1>
-      <FilterButton handleClick={handleClick} />
-      {isOpen && <FilterSidebar clickHandle={clickHandle}/>}
-      <div className=' grid md:grid-cols-2 lg:grid-cols-3'>
-        {jewelleryData.map((info, index) => (
+      <FilterButton handleClick={() => setIsOpen(true)} />
+      {isOpen && <FilterSidebar clickHandle={() => setIsOpen(false)} />}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3">
+        {products.map((info) => (
           <ProductCard
-            key={index}
-            titleimg={info.img}
-            title={info.title}
-            price={info.price}
+            key={info._id}
+            titleimg={info.imageFile1}
+            hoverimg={info.imageFile2}
+            title={info.name}
+            price={`₹ ${info.price}`}
           />
         ))}
       </div>

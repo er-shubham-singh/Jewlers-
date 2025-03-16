@@ -1,39 +1,54 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductCard from '../ProductsCard/ProductCard'
-import ringimg1 from '../../assets/ringimg1.jpg'
-import ringimg2 from '../../assets/ringimg2.jpg'
-import ringimg3 from '../../assets/ringimg3.jpg'
-import ringimg4 from '../../assets/ringimg4.jpg'
-import ringimg5 from '../../assets/ringim5.jpg'
-import ringimg6 from '../../assets/ringimg6.jpg'
-
-
-
-const ringData = [
-  { img: ringimg1, title: "Dazzling Grace Drop Earrings", price: "₹ 50784" },
-  { img: ringimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 40564" },
-  { img: ringimg3, title: "Dazzling Grace Drop Earrings", price: "₹ 45677" },
-  { img: ringimg4, title: "Dazzling Grace Drop Earrings", price: "₹ 12345" },
-  { img: ringimg5, title: "Dazzling Grace Drop Earrings", price: "₹ 98765" },
-  { img: ringimg6, title: "Dazzling Grace Drop Earrings", price: "₹ 67548" }
-]
 
 function Ring_CoupleRing() {
+  const [ringData, setRingData] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/products/Rings/couple%20rings')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch products')
+        }
+        return response.json()
+      })
+      .then((data) => {
+        console.log('API Response:', data)
+        setRingData(Array.isArray(data) ? data : data.products || [])
+        setLoading(false)
+      })
+      .catch((error) => {
+        console.error('Fetch error:', error)
+        setError(error.message)
+        setLoading(false)
+      })
+  }, [])
+
+  if (loading) return <p className="text-center text-lg">Loading...</p>
+  if (error) return <p className="text-center text-red-500">{error}</p>
+
   return (
     <>
-      <h1 className='text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center'>
-        CoupleRing (65748)
+      <h1 className="text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center">
+        Couple Rings ({ringData.length})
       </h1>
-      <div className=' grid md:grid-cols-2 lg:grid-cols-3'>
-        {ringData.map((info, index) => (
-          <ProductCard
-            key={index}
-            titleimg={info.img}
-            title={info.title}
-            price={info.price}
-          />
-        ))}
-      </div>
+      {ringData.length === 0 ? (
+        <p className="text-center text-gray-500">No products available</p>
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {ringData.map((info, index) => (
+            <ProductCard
+              key={index}
+              titleimg={info.imageFile1 || 'default-image.jpg'}
+              hoverimg={info.imageFile2 || 'default-hover.jpg'}
+              title={info.name}
+              price={info.price}
+            />
+          ))}
+        </div>
+      )}
     </>
   )
 }

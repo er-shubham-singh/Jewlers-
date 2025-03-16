@@ -1,38 +1,62 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import ProductCard from '../ProductsCard/ProductCard'
-import goldimg1 from '../../assets/goldimg1.jpg'
-import goldimg2 from '../../assets/goldimg2.jpg'
-import goldimg3 from '../../assets/goldimg3.jpg'
-import goldimg4 from '../../assets/goldimg4.jpg'
-import goldimg5 from '../../assets/goldimg5.jpg'
-
-
-const goldData = [
-  { img: goldimg1, hoverimg: goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 50784" },
-  { img: goldimg2, hoverimg: goldimg3, title: "Dazzling Grace Drop Earrings", price: "₹ 40564" },
-  { img: goldimg3, hoverimg: goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 45677" },
-  { img: goldimg4, hoverimg: goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 12345" },
-  { img: goldimg5, hoverimg: goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 98765" },
-  { img: goldimg2, hoverimg: goldimg3, title: "Dazzling Grace Drop Earrings", price: "₹ 67548" }
-]
 
 function Gold() {
+  const [goldProducts, setGoldProducts] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get(
+          'http://localhost:8000/api/products/Gold' // Corrected API endpoint
+        )
+
+        console.log('API Response:', response.data) // Debugging
+
+        if (Array.isArray(response.data)) {
+          setGoldProducts(response.data) // If the API returns an array
+        } else if (Array.isArray(response.data.products)) {
+          setGoldProducts(response.data.products) // If data is inside { products: [...] }
+        } else {
+          throw new Error('Invalid API response format')
+        }
+      } catch (err) {
+        setError(err.response?.data?.message || 'Failed to fetch products')
+        console.error('Error fetching products:', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchProducts()
+  }, [])
+
+  if (loading) return <p className="text-center text-lg">Loading...</p>
+  if (error) return <p className="text-center text-red-500">{error}</p>
+
   return (
     <>
-      <h1 className='text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center'>
-        Gold (65748)
+      <h1 className="text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center">
+        Gold ({goldProducts.length})
       </h1>
-      <div className=' grid md:grid-cols-2 lg:grid-cols-3'>
-        {goldData.map((info, index) => (
-          <ProductCard
-            key={index}
-            titleimg={info.img}
-            hoverimg={info.hoverimg}
-            title={info.title}
-            price={info.price}
-          />
-        ))}
-      </div>
+      {goldProducts.length === 0 ? (
+        <p className="text-center text-gray-500">No products available</p>
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {goldProducts.map((info, index) => (
+            <ProductCard
+              key={index}
+              titleimg={info.imageFile1 || 'default-image.jpg'}
+              hoverimg={info.imageFile2 || 'default-hover.jpg'}
+              title={info.name}
+              price={`₹ ${info.price}`}
+            />
+          ))}
+        </div>
+      )}
     </>
   )
 }

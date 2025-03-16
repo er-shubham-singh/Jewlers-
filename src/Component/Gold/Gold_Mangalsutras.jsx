@@ -1,37 +1,55 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductCard from '../ProductsCard/ProductCard'
-import goldimg1 from '../../assets/goldimg1.jpg'
-import goldimg2 from '../../assets/goldimg2.jpg'
-import goldimg3 from '../../assets/goldimg3.jpg'
-import goldimg4 from '../../assets/goldimg4.jpg'
-import goldimg5 from '../../assets/goldimg5.jpg'
-
-
-const goldData = [
-  { img: goldimg1, title: "Dazzling Grace Drop Earrings", price: "₹ 50784" },
-  { img: goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 40564" },
-  { img: goldimg3, title: "Dazzling Grace Drop Earrings", price: "₹ 45677" },
-  { img: goldimg4, title: "Dazzling Grace Drop Earrings", price: "₹ 12345" },
-  { img: goldimg5, title: "Dazzling Grace Drop Earrings", price: "₹ 98765" },
-  { img: goldimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 67548" }
-]
 
 function Gold_Mangalsutras() {
+  const [goldData, setGoldData] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/products/Gold/Mangalsutras')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch products')
+        }
+        return response.json()
+      })
+      .then((data) => {
+        console.log('API Response:', data)
+        setGoldData(Array.isArray(data) ? data : data.products || [])
+        setLoading(false)
+      })
+      .catch((error) => {
+        console.error('Fetch error:', error)
+        setError(error.message)
+        setGoldData([])
+        setLoading(false)
+      })
+  }, [])
+
+  if (loading) return <p className="text-center text-lg">Loading...</p>
+  if (error) return <p className="text-center text-red-500">{error}</p>
+
   return (
     <>
-      <h1 className='text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center'>
-        Gold Mangalsutras (65748)
+      <h1 className="text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center">
+        Gold Mangalsutras ({goldData.length})
       </h1>
-      <div className=' grid md:grid-cols-2 lg:grid-cols-3'>
-        {goldData.map((info, index) => (
-          <ProductCard
-            key={index}
-            titleimg={info.img}
-            title={info.title}
-            price={info.price}
-          />
-        ))}
-      </div>
+      {goldData.length === 0 ? (
+        <p className="text-center text-gray-500">No products available</p>
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {goldData.map((info, index) => (
+            <ProductCard
+              key={index}
+              titleimg={info.imageFile1 || 'default-image.jpg'}
+              hoverimg={info.imageFile2 || 'default-hover.jpg'}
+              title={info.name}
+              price={info.price}
+            />
+          ))}
+        </div>
+      )}
     </>
   )
 }

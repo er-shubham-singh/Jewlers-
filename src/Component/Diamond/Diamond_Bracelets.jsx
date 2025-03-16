@@ -1,38 +1,55 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductCard from '../ProductsCard/ProductCard'
-import diamondimg1 from '../../assets/diamondimg1.jpg'
-import diamondimg2 from '../../assets/diamondimg2.jpg'
-import diamondimg3 from '../../assets/diamondimg3.jpg'
-import diamondimg4 from '../../assets/diamondimg4.jpg'
-import diamondimg5 from '../../assets/diamondimg5.jpg'
-import diamondimg6 from '../../assets/diamondimg6.jpg'
-
-
-const diamondData = [
-  { img: diamondimg1, title: "Dazzling Grace Drop Earrings", price: "₹ 50784" },
-  { img: diamondimg2, title: "Dazzling Grace Drop Earrings", price: "₹ 40564" },
-  { img: diamondimg3, title: "Dazzling Grace Drop Earrings", price: "₹ 45677" },
-  { img: diamondimg4, title: "Dazzling Grace Drop Earrings", price: "₹ 12345" },
-  { img: diamondimg5, title: "Dazzling Grace Drop Earrings", price: "₹ 98765" },
-  { img: diamondimg6, title: "Dazzling Grace Drop Earrings", price: "₹ 67548" }
-]
 
 function Diamond_Bracelets() {
+  const [diamondData, setDiamondData] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/products/Diamond/Bracelets')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch products')
+        }
+        return response.json()
+      })
+      .then((data) => {
+        console.log('API Response:', data)
+        setDiamondData(Array.isArray(data) ? data : data.products || [])
+        setLoading(false)
+      })
+      .catch((error) => {
+        console.error('Fetch error:', error)
+        setError(error.message)
+        setDiamondData([])
+        setLoading(false)
+      })
+  }, [])
+
+  if (loading) return <p className="text-center text-lg">Loading...</p>
+  if (error) return <p className="text-center text-red-500">{error}</p>
+
   return (
     <>
-      <h1 className='text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center'>
-        Diamonds Bracelets (65748)
+      <h1 className="text-black lg:text-2xl font-bold p-2 lg:ml-8 my-3 md:text-left text-center">
+        Diamond Bracelets ({diamondData.length})
       </h1>
-      <div className=' grid md:grid-cols-2 lg:grid-cols-3'>
-        {diamondData.map((info, index) => (
-          <ProductCard
-            key={index}
-            titleimg={info.img}
-            title={info.title}
-            price={info.price}
-          />
-        ))}
-      </div>
+      {diamondData.length === 0 ? (
+        <p className="text-center text-gray-500">No products available</p>
+      ) : (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {diamondData.map((info, index) => (
+            <ProductCard
+              key={index}
+              titleimg={info.imageFile1 || 'default-image.jpg'}
+              hoverimg={info.imageFile2 || 'default-hover.jpg'}
+              title={info.name}
+              price={info.price}
+            />
+          ))}
+        </div>
+      )}
     </>
   )
 }

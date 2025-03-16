@@ -6,62 +6,59 @@ import { Autoplay } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { faLocation, faSearch } from "@fortawesome/free-solid-svg-icons";
-import Mumbai from "../assets/image/Mumbai.png";
-import jaipur from "../assets/image/jaipur.png";
-import Kolkata from "../assets/image/Kolkata.png";
-import Lucknow from "../assets/image/Lucknow.png";
-import Hyderabad from "../assets/image/Hyderabad.png";
-import soulmate1 from "../assets/image/soulmate1.png";
-import Pune from "../assets/image/Pune.png";
-import sesons from "../assets/image/sesons.jpg";
-import image3 from "../assets/image/image3.png";
-import exchange from "../assets/image/exchange.png";
-import purity from "../assets/image/purity.png";
-import replacements from "../assets/image/replacements.png";
-import maintan from "../assets/image/maintan.png";
-
-
+import Mumbai from "../../assets/image/Mumbai.png";
+import jaipur from "../../assets/image/jaipur.png";
+import Kolkata from "../../assets/image/Kolkata.png";
+import Lucknow from "../../assets/image/Lucknow.png";
+import Hyderabad from "../../assets/image/Hyderabad.png";
+import soulmate1 from "../../assets/image/soulmate1.png";
+import Pune from "../../assets/image/Pune.png";
+import sesons from "../../assets/image/sesons.jpg";
+import image3 from "../../assets/image/image3.png";
+import exchange from "../../assets/image/exchange.png";
+import purity from "../../assets/image/purity.png";
+import replacements from "../../assets/image/replacements.png";
+import maintan from "../../assets/image/maintan.png";
 
 const cards = [
-    {
-      icon: "🔄",
-      title: "Easy Exchange",
-      description:
-        "Upgrade your gold to stunning new Tanishq jewellery with 100% exchange value.",
-    },
-    {
-      icon: "🤝",
-      title: "Karatmeter",
-      description:
-        "Our state-of-the-art Karatmeter ensures precise gold purity measurement,",
-    },
-    {
-      icon: "🤝",
-      title: "Trust of TATA",
-      description:
-        "With Tanishq, you’re choosing exquisite jewellery backed by the trust of TATA.",
-    },
-    {
-      icon: "🤝",
-      title: "Trust of TATA",
-      description:
-        "With Tanishq, you’re choosing exquisite jewellery backed by the trust of TATA.",
-    },
-    {
-      icon: "🤝",
-      title: "Online Shopping",
-      description:
-        "With Tanishq, you’re choosing exquisite jewellery backed by the trust of TATA.",
-    },
-    {
-      icon: "🤝",
-      title: "Quick Checkout",
-      description:
-        "With Tanishq, you’re choosing exquisite jewellery backed by the trust of TATA.",
-    },
-   
+  {
+    icon: "🔄",
+    title: "Easy Exchange",
+    description:
+      "Upgrade your gold to stunning new Tanishq jewellery with 100% exchange value.",
+  },
+  {
+    icon: "🤝",
+    title: "Karatmeter",
+    description:
+      "Our state-of-the-art Karatmeter ensures precise gold purity measurement,",
+  },
+  {
+    icon: "🤝",
+    title: "Trust of TATA",
+    description:
+      "With Tanishq, you’re choosing exquisite jewellery backed by the trust of TATA.",
+  },
+  {
+    icon: "🤝",
+    title: "Trust of TATA",
+    description:
+      "With Tanishq, you’re choosing exquisite jewellery backed by the trust of TATA.",
+  },
+  {
+    icon: "🤝",
+    title: "Online Shopping",
+    description:
+      "With Tanishq, you’re choosing exquisite jewellery backed by the trust of TATA.",
+  },
+  {
+    icon: "🤝",
+    title: "Quick Checkout",
+    description:
+      "With Tanishq, you’re choosing exquisite jewellery backed by the trust of TATA.",
+  },
+ 
 ]
-
 
 const Category = [
   { id: 1, image: Mumbai },
@@ -76,7 +73,7 @@ const Category = [
   { id: 10, image: Pune },
 ];
 
-export default function Store() {
+function StoreSection() {
   return (
       <div className="bg-[#f5f5dc] w-full">
         <div className="max-w-[1200px] lg:mx-auto  mx-3 md:pt-25  pt-30 ">
@@ -241,3 +238,5 @@ export default function Store() {
       </div>
   );
 }
+
+export default StoreSection

@@ -38,7 +38,7 @@ import Ring_CoupleRing from "./Component/Ring/Ring_CoupleRing";
 import Ring_DiamondEngagement from "./Component/Ring/Ring_DiamondEngagement";
 import Ring_Engagement from "./Component/Ring/Ring_Engagement";
 import Ring_MensRing from "./Component/Ring/Ring_MensRing";
-import PlatinumRing from  "./Component/Ring/PlatinumRing";
+import PlatinumRing from "./Component/Ring/PlatinumRing";
 import Daily_Wear_jewelery from "./Component/Daiy_Wear/Daily_Wear_jewelery"
 import Dailywear_Chains from "./Component/Daiy_Wear/Dailywear_Chains";
 import DailyWear_Earing from "./Component/Daiy_Wear/DailyWear_Earing";
@@ -49,73 +49,110 @@ import AllJewelery_Pendants from "./Component/All_Jewellery/AllJewelery_Pendants
 import AllJewelery_FingerRing from "./Component/All_Jewellery/AllJewelery_FingerRing";
 import AllJwelery_Mangalsutras from "./Component/All_Jewellery/AllJwelery_Mangalsutras";
 import AllJwelery_Chains from "./Component/All_Jewellery/AllJwelery_Chains"
+
+import Navbar from './Component/Navbar/Navbar'
+import VideoCarousel from "./Component/VideoCarousel";
+
+
+// import VideoCarousel from "./Component/VidCarousel";
+
+import DiamondSection from "./Component/Common/DiamondSection";
+import StoreSection from "./Component/Common/StoreSection";
+import WishList from "./Component/Common/WishList";
+import LoginSignUp from "./Component/Common/LoginSignUp";
+import ProductBag from "./Component/Common/ProductBag";
+import JewelleryCategory from "./Component/Common/JewelleryCategory";
 function App() {
   return (
     <>
-      <Header />  {/* ✅ Header will be shown on every page */}
+
+   
+      <Header /> 
+
+
       <Routes>
         <Route path="/" element={<Home />} />
+        {/* <Route path="/slider" element={<VideoCarousel /> } /> */}
+        <Route path="/store" element={<StoreSection />} />
+        <Route path="/wishlist" element = {<WishList />} />
+        <Route path ="/login/sihnup"  element = {<LoginSignUp />} />
+        <Route path="/addtobag"  element = {<ProductBag />} />
+ 
+        {/* Diamond Section */}
+        <Route path="/diamond" element={<DiamondSection /> } />
 
         {/* All Jewelery Link */}
+        {/* <Route path="/all-jewellery" element={<AllJewellary />} />
+        <Route path="/all-jewelery/earings" element={<AllJewelery_Earing />} />
+        <Route path="/all-jewellery/pendants" element={<AllJewelery_Pendants />} />
+        <Route path="/all-jewellery/finger-rings" element={<AllJewelery_FingerRing />} />
+        <Route path="/all-jewellery/mangalsutras" element={<AllJwelery_Mangalsutras />} />
+        <Route path="/all-jewellery/chains" element={<AllJwelery_Chains />} /> */}
+    {/* Route for all jewellery without category type */}
+
+     {/* Route for all jewellery without category type */}
         <Route path="/all-jewellery" element={<AllJewellary />} />
-        <Route path="/alljewelery-earings" element={<AllJewelery_Earing />} />
-        <Route path="/all-jewellery-pendants" element={<AllJewelery_Pendants />} />
-        <Route path="/all-jewellery-finger-rings" element={<AllJewelery_FingerRing />} />
-        <Route path="/all-jewellery-mangalsutras" element={<AllJwelery_Mangalsutras />} />
-        <Route path="/all-jewellery-chains" element={<AllJwelery_Chains />} />
+
+        {/* Route for jewellery with category type */}
+        <Route path="/all-jewellery/:categoryType" element={<AllJewellary />} />
 
         {/* Gold Link Page */}
-        <Route path="/gold" element={<Gold />} />
+        {/* <Route path="/gold" element={<Gold />} />
         <Route path="/gold-bangles" element={<Gold_Bangles />} />
         <Route path="/gold-bracelets" element={<Gold_Bracelets />} />
-        <Route path = "/gold-earings" element={<Gold_Earings />} />
-        <Route path="/gold-chains" element={<Gold_Chains />}/>
-        <Route path="/gold-pendants" element={<Gold_Pendants />}/>
-        <Route path="/gold-rings" element={<Gold_Rings />}/>
-        <Route path="/gold-engagement-rings" element={<Gold_Engagement />}/>
-        <Route path="/gold-necklaces" element={<Gold_Necklaces />}/>
-        <Route path="/gold-nose-pins" element={<Gold_Nose_Pins />}/>
-        <Route path="/gold-kadas" element={<Gold_Kadas />}/>
-        <Route path="/gold-mangalsutras" element={<Gold_Mangalsutras />}/>
-        <Route path="/gold-jhumkas" element={<Gold_Jhumkas />}/>
+        <Route path="/gold-earings" element={<Gold_Earings />} />
+        <Route path="/gold-chains" element={<Gold_Chains />} />
+        <Route path="/gold-pendants" element={<Gold_Pendants />} />
+        <Route path="/gold-rings" element={<Gold_Rings />} />
+        <Route path="/gold-engagement-rings" element={<Gold_Engagement />} />
+        <Route path="/gold-necklaces" element={<Gold_Necklaces />} />
+        <Route path="/gold-nose-pins" element={<Gold_Nose_Pins />} />
+        <Route path="/gold-kadas" element={<Gold_Kadas />} />
+        <Route path="/gold-mangalsutras" element={<Gold_Mangalsutras />} />
+        <Route path="/gold-jhumkas" element={<Gold_Jhumkas />} /> */}
+
+<Route path="/gold" element={<Gold />} />
+
+{/* Route for jewellery with category type */}
+<Route path="/gold/:categoryType" element={<Gold />} />
 
         {/* Diamong Link Page */}
-        <Route path="/diamond" element = {<Diamond />} />
-        <Route path="/diamond-bangles" element = {<Diamond_Bangles />} />
-        <Route path="/diamond-bracelets" element = {<Diamond_Bracelets />} />
-        <Route path="/diamond-earings" element = {<Diamond_Earings />} />
-        <Route path="/diamond-ring" element = {<Diamond_Rings />} />
-        <Route path="/diamond-mangalsutras" element = {<Diamond_MAngalsutras />} />
-        <Route path="/diamond-necklace-set" element = {<Diamond_NecklaceSet />} />
-        <Route path="/diamond-necklace" element = {<Diamond_Necklaces />} />
-        <Route path="/diamond-nose-pins" element = {<Diamond_NosePins />} />
-        <Route path="/diamond-pendants" element = {<Diamond_Pendants />} />
+        <Route path="/diamond" element={<Diamond />} />
+        <Route path="/diamond-bangles" element={<Diamond_Bangles />} />
+        <Route path="/diamond-bracelets" element={<Diamond_Bracelets />} />
+        <Route path="/diamond-earings" element={<Diamond_Earings />} />
+        <Route path="/diamond-ring" element={<Diamond_Rings />} />
+        <Route path="/diamond-mangalsutras" element={<Diamond_MAngalsutras />} />
+        <Route path="/diamond-necklace-set" element={<Diamond_NecklaceSet />} />
+        <Route path="/diamond-necklace" element={<Diamond_Necklaces />} />
+        <Route path="/diamond-nose-pins" element={<Diamond_NosePins />} />
+        <Route path="/diamond-pendants" element={<Diamond_Pendants />} />
 
         {/* Earing Link Page */}
-        <Route path = "/earings" element = {<Earing />} />
-        <Route path = "/earing-drop-danglers" element = {<Earing_DropDanglers />} />
-        <Route path = "/earing-hoop-huggies" element = {<Earing_HoopHoggies />} />
-        <Route path = "/earing-jhumkas" element = {<Earing_Jhumkas />} />
-        <Route path = "/earing-studs-tops" element = {<Earing_StudTops />} />
+        <Route path="/earings" element={<Earing />} />
+        <Route path="/earing-drop-danglers" element={<Earing_DropDanglers />} />
+        <Route path="/earing-hoop-huggies" element={<Earing_HoopHoggies />} />
+        <Route path="/earing-jhumkas" element={<Earing_Jhumkas />} />
+        <Route path="/earing-studs-tops" element={<Earing_StudTops />} />
 
         {/* Rings Link Page */}
-        <Route path = "/all-rings" element = {<Rings />} />
-        <Route path = "/rings-casual-rings" element = {<Ring_CasualRing />} />
-        <Route path = "/rings-couple-rings" element = {<Ring_CoupleRing />} />
-        <Route path = "/rings-diamond-engagement-ring" element = {<Ring_DiamondEngagement />} />
-        <Route path = "/rings-engagement-ring" element = {<Ring_Engagement />} />
-        <Route path = "/rings-mens-ring" element = {<Ring_MensRing />} />
-        <Route path = "/rings-platinum-engagement-ring" element = {<PlatinumRing />} />
+        <Route path="/all-rings" element={<Rings />} />
+        <Route path="/rings-casual-rings" element={<Ring_CasualRing />} />
+        <Route path="/rings-couple-rings" element={<Ring_CoupleRing />} />
+        <Route path="/rings-diamond-engagement-ring" element={<Ring_DiamondEngagement />} />
+        <Route path="/rings-engagement-ring" element={<Ring_Engagement />} />
+        <Route path="/rings-mens-ring" element={<Ring_MensRing />} />
+        <Route path="/rings-platinum-engagement-ring" element={<PlatinumRing />} />
 
         {/* Daily Wear */}
-        <Route path = "/dailywear-jewellery" element = {<Daily_Wear_jewelery />} />
-        <Route path = "/dailywear-chains" element = {<Dailywear_Chains />} />
-        <Route path = "/dailywear-earings" element = {<DailyWear_Earing />} />
-        <Route path = "/dailywear-pendants" element = {<DailyWear_Pendants />} />
-        <Route path = "/dailywear-mangalsutra" element = {<DailyWear_Mangalsutras />} />
+        <Route path="/dailywear-jewellery" element={<Daily_Wear_jewelery />} />
+        <Route path="/dailywear-chains" element={<Dailywear_Chains />} />
+        <Route path="/dailywear-earings" element={<DailyWear_Earing />} />
+        <Route path="/dailywear-pendants" element={<DailyWear_Pendants />} />
+        <Route path="/dailywear-mangalsutra" element={<DailyWear_Mangalsutras />} />
 
-        <Route path = "/collection" element={<Collection />} />
-        <Route path ="/wedding" element={<Wedding />} />
+        <Route path="/collection" element={<Collection />} />
+        <Route path="/wedding" element={<Wedding />} />
       </Routes>
     </>
   );

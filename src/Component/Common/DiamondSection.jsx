@@ -5,26 +5,25 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import video from "../assets/video/RajPatra.mp4";
-import sideimg from "../assets/image/images.jpeg";
+import video from "../../assets/video/RajPatra.mp4";
+import sideimg from "../../assets/image/images.jpeg";
 import { Swiper, SwiperSlide } from "swiper/react";
-import hexa from "../assets/image/hexagon.png";
-import diant from "../assets/image/dianty.png";
-import heart from "../assets/image/hearts.png";
-import exchange from "../assets/image/exchange.png";
-import purity from "../assets/image/purity.png";
-import replacements from "../assets/image/replacements.png";
-import maintan from "../assets/image/maintan.png";
-import pristine from "../assets/image/pristine.png";
-import engagement from "../assets/image/engagement.png";
-import Our from "../assets/image/pngtre.png";
-import book from "../assets/image/download.jpeg";
-import talk from "../assets/image/talk.png";
+import hexa from "../../assets/image/hexagon.png";
+import diant from "../../assets/image/dianty.png";
+import heart from "../../assets/image/hearts.png";
+import exchange from "../../assets/image/exchange.png";
+import purity from "../../assets/image/purity.png";
+import replacements from "../../assets/image/replacements.png";
+import maintan from "../../assets/image/maintan.png";
+import pristine from "../../assets/image/pristine.png";
+import engagement from "../../assets/image/engagement.png";
+import Our from "../../assets/image/pngtre.png";
+import book from "../../assets/image/download.jpeg";
+import talk from "../../assets/image/talk.png";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-
 const time = [
   {
     id: 1,
@@ -106,7 +105,9 @@ const images = [
   "/images/img5.jpg",
 ];
 
-export default function Diamondstop() {
+
+
+  function DiamondSection() {
   const [current, setCurrent] = useState(2);
 
   const nextSlide = () => {
@@ -513,3 +514,5 @@ export default function Diamondstop() {
     </div>
   );
 }
+
+export default DiamondSection

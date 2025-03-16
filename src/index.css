@@ -1,1 +1,33 @@
 @import "tailwindcss";
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+video {
+    border: none !important;
+    outline: none !important;
+  }
+  
+  .fullscreen-btn {
+    position: absolute;
+    top: 10px; /* Adjust to bring it closer */
+    right: 10px;
+    background: white;
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .fullscreen-btn:hover {
+    transform: scale(1.1);
+  }
+  .video-container {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .swiper-slide {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+  }
+    

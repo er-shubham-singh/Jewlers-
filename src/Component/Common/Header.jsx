@@ -16,6 +16,7 @@ import {
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [userDropdown, setUserDropdown] = useState(false);
 
   
   return (
@@ -45,13 +46,30 @@ const Header = () => {
                     <Link to="/diamond" ><FaGem className="cursor-pointer size-7" /></Link>
                     <Link to="/store"><FaStore className="cursor-pointer size-7" /></Link>
                     <FaHeart className="cursor-pointer size-7" />
-                    <FaUser className="cursor-pointer size-7" />
+                    <div 
+            className="relative"
+            onMouseEnter={() => setUserDropdown(true)}
+            onMouseLeave={() => setUserDropdown(false)}
+          >
+            <FaUser className="cursor-pointer size-7" />
+
+            {/* Dropdown */}
+            {userDropdown && (
+              <div className="z-30 absolute right-0 top-full  w-40 bg-white text-gray-800 shadow-lg rounded-lg">
+                <Link to="/login/sihnup" className="block px-4 py-2 hover:bg-gray-100">Log in / Sign up</Link>
+                <Link to="/contactpage" className="block px-4 py-2 hover:bg-gray-100">Contact Us</Link>
+              </div>
+            )}
+          </div>
+
+<Link  to="/productbag">
                     <div className="relative cursor-pointer">
                         <FaShoppingBag className='size-7' />
                         <span className="absolute -top-1 -right-1 bg-[#5b2724] text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
                             0
                         </span>
                     </div>
+                    </Link>
                 </div>
             </nav>
       <div className="container mx-auto flex justify-end pr-4 items-center">

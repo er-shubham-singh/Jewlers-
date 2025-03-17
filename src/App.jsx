@@ -60,6 +60,7 @@ import StoreSection from './Component/Common/StoreSection'
 import WishList from './Component/Common/WishList'
 import LoginSignUp from './Component/Common/LoginSignUp'
 import ProductBag from './Component/Common/ProductBag'
+import Contactpage from './Component/Common/Contactpage'
 function App() {
   return (
     <>
@@ -71,6 +72,8 @@ function App() {
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/login/sihnup" element={<LoginSignUp />} />
         <Route path="/addtobag" element={<ProductBag />} />
+        <Route path ="/contactpage" element={<Contactpage />} />
+        <Route path="/productbag" element={<ProductBag />} />
 
         {/* Diamond Section */}
         {/* this route is wrong  */}

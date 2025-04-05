@@ -57,23 +57,67 @@ import WishList from './Component/Common/WishList'
 import LoginSignUp from './Component/Common/LoginSignUp'
 import ProductBag from './Component/Common/ProductBag'
 import Contactpage from './Component/Common/Contactpage'
+import AddCart from "./Component/Common/AddCart"
+import Footer from "./Component/Common/Footer"
+import BottomCard from "./Component/Common/BottomCard"
+import EmptyCart from './Component/Common/EmptyCart'
+import ProtectedRoute from './Component/ProtectedRoute'
+import OrderDelever from './Component/Common/OrderDelever'
+import ShippingDetails from './Component/Common/ShippingDetails'
+import VerifyEmail from './Component/Common/VerifyEmail'
+import SignForm from "./Component/Common/SignForm"
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import CoverflowVideoCarousel from './Component/VideoCarousel'
+import { useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
+
 function App() {
+
+
+  function ScrollToTop() {
+    const location = useLocation();
+  
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [location]);
+  
+    return null;
+  }
+
+
   return (
     <>
+    <ToastContainer />
+    <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path="/slider" element={<VideoCarousel /> } /> */}
         <Route path="/store" element={<StoreSection />} />
-        <Route path="/wishlist" element={<WishList />} />
+     
         <Route path="/login/sihnup" element={<LoginSignUp />} />
         <Route path="/addtobag" element={<ProductBag />} />
         <Route path ="/contactpage" element={<Contactpage />} />
-        <Route path="/productbag" element={<ProductBag />} />
+        {/* <Route path="/productbag" element={<ProductBag />} /> */}
+        <Route path ="/addcart" element = {<AddCart />} />
+        <Route path ="/bottomcard" element = {<BottomCard />} />
+        <Route path ="/emptycart"  element={<EmptyCart />} />
+        <Route path="/orderDelever" element={<OrderDelever />} />
+        <Route path="/ShippingDetails" element={<ShippingDetails />} />
+        <Route path ="/verifyemail"  element={<VerifyEmail />} />
+        <Route path="/signup" element = {<SignForm />} /> 
+        <Route path = "videocarousel" element={<CoverflowVideoCarousel />}  />
+       
+        {/* Protected Routes (Require Token) */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/productbag" element={<ProductBag />} />
+          <Route path="/wishlist" element={<WishList />} />
+        </Route>
 
         {/* Diamond Section */}
         {/* this route is wrong  */}
-        {/* <Route path="/diamond" element={<DiamondSection />} /> */}
+        <Route path="/diamondsection" element={<DiamondSection />} />
 
         {/* All Jewelery Link */}
         <Route path="/all-jewellery" element={<AllJewellary />} />
@@ -157,6 +201,7 @@ function App() {
         <Route path="/collection" element={<Collection />} />
         <Route path="/wedding" element={<Wedding />} />
       </Routes>
+      <Footer />
     </>
   )
 }

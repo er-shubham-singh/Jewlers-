@@ -41,7 +41,7 @@ export default function CoverflowVideoCarousel() {
         centeredSlides={true}
         slidesPerView={2}
         loop={true}
-        spaceBetween={-140}
+        spaceBetween={-60}
         coverflowEffect={{
           rotate: 0,
           stretch: 80,
